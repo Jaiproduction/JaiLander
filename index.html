@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JaiLander — Landing Pages for Sellers</title>
+  <meta name="description" content="Turn your products into profits with high-converting landing pages. JaiLander builds fast, modern and mobile-friendly pages for online sellers." />
+
+  <style>
+    /* ====== Variables & Base ====== */
+    :root{
+      --bg:#07090b;
+      --card:#0b0f14;
+      --muted:#9aa3ad;
+      --accent1:#3b82f6; /* blue */
+      --accent2:#8b5cf6; /* purple */
+      --accent3:#ffffff; /* white */
+      --glass: rgba(255,255,255,0.04);
+      --card-border: rgba(255,255,255,0.05);
+      --radius: 14px;
+      --max-w: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #050609 100%);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ====== Layout ====== */
+    .container{
+      max-width:var(--max-w);
+      margin:0 auto;
+      padding:28px;
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:12px 0;
+    }
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:48px;height:48px;border-radius:10px;
+      background: linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));
+      display:flex;align-items:center;justify-content:center;
+      color:var(--bg); font-weight:700;
+      box-shadow: 0 6px 18px rgba(59,130,246,0.12);
+      font-family:monospace;
+    }
+    nav{display:flex;gap:18px;align-items:center;font-size:14px;color:var(--muted)}
+    .btn-ghost{padding:8px 12px;border-radius:10px;background:transparent;border:1px solid var(--card-border);color:var(--muted)}
+    .cta{padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;font-weight:600}
+
+    /* ====== Hero ====== */
+    .hero{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      align-items:center;
+      padding:28px 0 8px;
+    }
+    .hero .title{
+      font-size:28px;font-weight:800;line-height:1.03;
+    }
+    .gradient-line{
+      background: linear-gradient(90deg,var(--accent1),var(--accent2),var(--accent3));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      display:inline-block;
+    }
+    .subtitle{color:var(--muted);margin-top:12px;max-width:58ch}
+
+    .hero-cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+    .btn-wa{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));font-weight:600}
+    .btn-mail{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;background:transparent;border:1px solid var(--card-border)}
+
+    /* hero preview card */
+    .preview{
+      border-radius:18px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--card-border);box-shadow:0 8px 30px rgba(3,7,12,0.6)
+    }
+    .product-head{display:flex;justify-content:space-between;align-items:center}
+    .product-title{font-weight:700;font-size:18px}
+    .price{font-weight:800;color:var(--accent1)}
+
+    /* ====== Sections ====== */
+    section{padding:28px 0}
+    .grid{display:grid;gap:16px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .card{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));border:1px solid var(--card-border)}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* pricing */
+    .pricing-grid{display:grid;gap:16px}
+    .price-card{padding:20px;border-radius:14px;border:1px solid var(--card-border);background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)}
+    .price-card.highlight{border:1px solid rgba(99,102,241,0.9);box-shadow:0 18px 40px rgba(99,102,241,0.06)}
+
+    .price-amount{font-size:20px;font-weight:800;margin-top:6px}
+    .choose{display:inline-block;margin-top:14px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff}
+
+    /* portfolio */
+    .demo{height:160px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.9);font-weight:700}
+
+    /* contact */
+    .contact-grid{display:grid;gap:16px}
+    .form-field{margin-top:10px}
+    input,textarea{
+      width:100%;padding:12px;border-radius:10px;background:transparent;border:1px solid var(--card-border);color:#fff;outline:none;
+    }
+    .small{font-size:13px;color:var(--muted)}
+
+    /* footer */
+    footer{padding:22px 0;text-align:center;color:var(--muted);border-top:1px solid var(--card-border);margin-top:24px;border-radius:6px}
+
+    /* ====== Responsiveness ====== */
+    @media(min-width:800px){
+      .hero{grid-template-columns:1fr 420px}
+      .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+      .pricing-grid{grid-template-columns:repeat(3,1fr)}
+      .contact-grid{grid-template-columns:1fr 420px}
+    }
+
+    @media(max-width:420px){
+      .logo{width:44px;height:44px}
+      .hero .title{font-size:22px}
+      .preview{padding:14px}
+      .demo{height:120px}
+    }
+
+    /* small visual niceties */
+    .fade-up{opacity:0;transform:translateY(10px);animation:fadeUp .6s forwards}
+    .stagger-1{animation-delay:0.05s}
+    .stagger-2{animation-delay:0.12s}
+    .stagger-3{animation-delay:0.18s}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">JL</div>
+        <div>
+          <div style="font-weight:700">JaiLander</div>
+          <div style="font-size:13px;color:var(--muted)">Landing pages that sell</div>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#features" class="small">Why</a>
+        <a href="#process" class="small">Process</a>
+        <a href="#pricing" class="small">Pricing</a>
+        <a href="#portfolio" class="small">Portfolio</a>
+        <a href="#contact" class="cta">Get Started</a>
+      </nav>
+    </header>
+    <nav>
+      <a href="./review.html">Client Reviews</a>
+      <a href="./next.html">preview</a>
+      <a href="./fqr.html">FAQ</a>
+      <a href="./support.html" class="cta">Support</a>
+    </nav>
+    <!-- HERO -->
+    <main class="hero" id="top">
+      <div>
+        <h1 class="title fade-up stagger-1">
+          Turn your products into profits
+          <div class="gradient-line">with high-converting landing pages.</div>
+        </h1>
+        <p class="subtitle fade-up stagger-2">
+          I build fast, modern, and fully responsive pages that help your business sell more online. Custom coded, conversion-focused,
+          and optimized for mobile buyers.
+        </p>
+
+        <div class="hero-cta fade-up stagger-3">
+          <!-- Replace the number in the wa.me link with your real WhatsApp number (country code + number, no + or 0) -->
+          <a class="btn-wa" href="https://wa.me/+2349113740799" target="_blank" rel="noreferrer">
+            <!-- WhatsApp icon (simple) -->
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="filter:drop-shadow(0 2px 6px rgba(0,0,0,0.2))">
+              <path d="M20.5 3.5A11 11 0 0 0 3.6 20.4L3 22l1.6-.5A11 11 0 1 0 20.5 3.5z" fill="#fff" opacity="0.08"/>
+              <path d="M17.5 14.5c-.3-.1-1.6-.8-1.8-.9-.2-.1-.3-.1-.5.1-.2.3-.7.9-.9 1.1-.2.2-.3.3-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.6-1.8-1.7-2.1-.1-.3 0-.4.1-.6.1-.2.2-.3.3-.5.1-.2.1-.3.2-.5.1-.2 0-.4-.1-.6-.1-.2-1.5-3.6-2.1-4.9-.3-.7-.6-.6-.9-.6-.2 0-.5 0-.8 0-.3 0-.6.1-.9.6-.3.5-1.1 1.9-1.1 4.6 0 2.7 1.1 5.3 2.4 7.1 1.3 1.8 2.7 2 3.3 2.2.6.2 2.3.9 4.5-.6 2.2-1.6 3.1-5.1 3.4-5.8.2-.7.2-1.3 0-1.4-.1-.1-.4-.2-.7-.3z" fill="#fff"/>
+            </svg>
+            Contact on WhatsApp
+          </a>
+
+          <!-- Replace the email address with yours -->
+          <a class="btn-mail" href="mailto:hello@jailander.com">Contact Via Email</a>
+        </div>
+
+        <div style="margin-top:12px;color:var(--muted);font-size:13px">
+          Website: <strong style="color:var(--accent1)">JaiLander</strong>
+        </div>
+      </div>
+
+      <!-- Preview card -->
+      <aside class="preview fade-up stagger-2">
+        <div class="product-head">
+          <div>
+            <div class="product-title">GlowSkin Serum — 30ml</div>
+            <div class="muted" style="margin-top:6px;font-size:13px">Brightens skin in 7 days — best seller</div>
+          </div>
+          <div style="text-align:right">
+            <div class="price">₦8,500</div>
+            <div class="muted" style="font-size:12px">per bottle</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+          <div style="height:64px;border-radius:8px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#fff">Skin care</div>
+          <div style="height:64px;border-radius:8px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;color:var(--muted)">Arts</div>
+          <div style="height:64px;border-radius:8px;background:rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;color:var(--muted)">Pants</div>
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:8px">
+          <button style="flex:1;padding:10px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border:none;color:#fff;font-weight:700">Buy Now</button>
+          <button style="padding:10px;border-radius:10px;background:transparent;border:1px solid var(--card-border);color:var(--muted)">Preview</button>
+        </div>
+      </aside>
+    </main>
+
+    <!-- WHY CHOOSE ME -->
+    <section id="features">
+      <h2 style="font-size:20px;margin:0 0 8px">Why choose JaiLander?</h2>
+      <p class="muted" style="margin:0 0 14px">Custom coded landing pages that are optimized for conversions, speed, and mobile buyers.</p>
+
+      <div class="grid cols-3">
+        <div class="card fade-up stagger-1">
+          <strong>Custom, coded pages</strong>
+          <div class="muted" style="margin-top:8px">No templates. Full control over design, speed and UX.</div>
+        </div>
+        <div class="card fade-up stagger-2">
+          <strong>Conversion focused</strong>
+          <div class="muted" style="margin-top:8px">Strong CTAs, optimized structure and clear social proof.</div>
+        </div>
+        <div class="card fade-up stagger-3">
+          <strong>Fast delivery</strong>
+          <div class="muted" style="margin-top:8px">Clear timelines, quick revisions and reliable support.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process">
+      <h2 style="font-size:20px;margin:0 0 8px">Simple 3-step process</h2>
+      <p class="muted" style="margin:0 0 14px">From brief to launch — simple and predictable.</p>
+
+      <div class="grid cols-3">
+        <div class="card fade-up stagger-1">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700">1</div>
+            <div>
+              <strong>Share details</strong>
+              <div class="muted" style="margin-top:6px">Send product photos, copy and brand colors.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-up stagger-2">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700">2</div>
+            <div>
+              <strong>I build it</strong>
+              <div class="muted" style="margin-top:6px">Custom code, forms and payment integration.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card fade-up stagger-3">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700">3</div>
+            <div>
+              <strong>Launch & sell</strong>
+              <div class="muted" style="margin-top:6px">Deploy to your domain and start converting traffic.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing">
+      <h2 style="font-size:20px;margin:0 0 8px">Plans</h2>
+      <p class="muted" style="margin:0 0 14px">Pick a plan that fits your needs — all pages are responsive and optimized for conversions.</p>
+
+      <div class="pricing-grid">
+        <div class="price-card fade-up stagger-1">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="small">Simple</div>
+              <div class="price-amount">₦85,000</div>
+            </div>
+            <div class="small">One-time</div>
+          </div>
+          <ul class="muted" style="margin-top:12px;padding-left:18px">
+            <li>1 page</li>
+            <li>Responsive</li>
+            <li>1 revision</li>
+          </ul>
+          <a class="choose" href="https://wa.me/2349113740799" target="_blank" rel="noreferrer">Choose plan</a>
+        </div>
+
+        <div class="price-card highlight fade-up stagger-2">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="small">Advance</div>
+              <div class="price-amount">₦160,000</div>
+            </div>
+            <div class="small">One-time</div>
+          </div>
+          <ul class="muted" style="margin-top:12px;padding-left:18px">
+            <li>1 page + product carousel</li>
+            <li>Forms & email integration</li>
+            <li>2 revisions</li>
+          </ul>
+          <a class="choose" href="https://wa.me/2349113740799" target="_blank" rel="noreferrer">Choose plan</a>
+        </div>
+
+        <div class="price-card fade-up stagger-3">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="small">Standard</div>
+              <div class="price-amount">₦280,000</div>
+            </div>
+            <div class="small">One-time</div>
+          </div>
+          <ul class="muted" style="margin-top:12px;padding-left:18px">
+            <li>Multi-section page</li>
+            <li>Payment integration</li>
+            <li>4 revisions + support</li>
+          </ul>
+          <a class="choose" href="https://wa.me/1234567890" target="_blank" rel="noreferrer">Choose plan</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio">
+      <h2 style="font-size:20px;margin:0 0 8px">Portfolio (demos)</h2>
+      <p class="muted" style="margin:0 0 14px">Built for sellers who want to scale.</p>
+
+      <div class="grid cols-3">
+        <div class="card fade-up stagger-1">
+          <div class="demo"><img src="./img/pl.webp" alt=""></div>
+          <div style="margin-top:10px"><strong>Product launch</strong><div class="muted" style="margin-top:8px">Clean layout for quick conversions.</div></div>
+        </div>
+
+        <div class="card fade-up stagger-2">
+          <div class="demo"><img src="./img/OIP.webp" alt="" style="height: 160px; width: 300px;"></div>
+          <div style="margin-top:10px"><strong>Subscription box</strong><div class="muted" style="margin-top:8px">Focus on benefits & social proof.</div></div>
+        </div>
+
+        <div class="card fade-up stagger-3">
+          <div class="demo"><img src="./img/OIP (1).webp" alt=""  style="height: 160px; width: 300px;"></div>
+          <div style="margin-top:10px"><strong>Digital course</strong><div class="muted" style="margin-top:8px">Sales-first structure with CTA funnel.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 style="font-size:20px;margin:0 0 8px">Get started</h2>
+      <p class="muted" style="margin:0 0 14px">Send a message on WhatsApp or use the contact form — include product details and I’ll reply with an estimate.</p>
+
+      <div class="contact-grid">
+        <div class="card fade-up stagger-1">
+          <strong>Quick contact</strong>
+          <p class="muted" style="margin-top:8px">WhatsApp or Email — include product count and images if available.</p>
+
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn-wa" href="https://wa.me/1234567890" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a class="btn-mail" href="mailto:hello@jailander.com">Email</a>
+          </div>
+
+          <div class="small" style="margin-top:12px">Prefer a custom quote? Provide product count and preferred launch date in your message.</div>
+        </div>
+
+        <form id="contactForm" class="card fade-up stagger-2" method="POST" action="https://formspree.io/f/yourFormID">
+          <!-- ===== IMPORTANT =====
+               Replace the action URL above (https://formspree.io/f/yourFormID)
+               with your Formspree form endpoint (e.g. https://formspree.io/f/abcd1234).
+               To get that: signup/log into Formspree, create a form and copy the endpoint.
+               If you prefer not to use Formspree, you can replace the form action with a server endpoint
+               or remove the JS below to fallback to a mailto link (the JS will handle fallback).
+          -->
+          <label class="small">Your name</label>
+          <input type="text" name="name" placeholder="Your name" required />
+
+          <label class="small form-field">Email</label>
+          <input type="email" name="email" placeholder="you@example.com" required />
+
+          <label class="small form-field">Message</label>
+          <textarea name="message" rows="5" placeholder="Tell me about your product" required></textarea>
+
+          <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+            <button type="submit" class="choose">Send message</button>
+            <button type="reset" class="btn-ghost">Clear</button>
+            <div id="formStatus" style="margin-left:auto;font-size:13px;color:var(--muted)"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> JaiLander — All rights reserved.
+    </footer>
+  </div>
+
+  <script>
+    // small UI niceties
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // apply simple fade-up animations on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.fade-up').forEach(el => {
+        // trigger css animation (already has it defined)
+        // keep as-is; CSS handles delays via classes
+      });
+    });
+
+    // Contact form handler (tries Formspree POST, falls back to mailto)
+    (function(){
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = 'Sending...';
+
+        const action = form.getAttribute('action').trim();
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        // If action still has the placeholder 'yourFormID', show instruction
+        if (action.includes('yourFormID') || action === '' ) {
+          status.textContent = 'Replace form action with your Formspree endpoint (see comments)';
+          status.style.color = '#fbbf24'; // amber
+          return;
+        }
+
+        // Try POST to Formspree endpoint
+        try {
+          const res = await fetch(action, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+          });
+
+          if (res.ok) {
+            form.reset();
+            status.textContent = 'Message sent. I will reply shortly.';
+            status.style.color = '#34d399'; // green
+          } else {
+            // Try to parse JSON for details
+            const text = await res.text();
+            status.textContent = 'Sending failed — server returned an error.';
+            status.style.color = '#f87171'; // red
+            console.warn('Formspree error:', res.status, text);
+          }
+        } catch (err) {
+          console.error(err);
+          // final fallback: open mailto with data pre-filled
+          const name = encodeURIComponent(payload.name || '');
+          const email = encodeURIComponent(payload.email || '');
+          const message = encodeURIComponent(payload.message || '');
+          const mailto = `mailto:hello@jailander.com?subject=${encodeURIComponent('Website inquiry from ' + (payload.name||''))}&body=Name:%20${name}%0AEmail:%20${email}%0A%0A${message}`;
+          window.location.href = mailto;
+          status.textContent = 'Could not reach server — opening email client...';
+          status.style.color = '#f59e0b';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

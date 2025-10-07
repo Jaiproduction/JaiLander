@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Reviews | Jailander</title>
+  <style>
+    :root {
+      --bg: #07090b;
+      --card: #0b0f14;
+      --muted: #9aa3ad;
+      --accent1: #3b82f6;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--accent1);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .reviews-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      max-width: 1000px;
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    .review-card {
+      background-color: var(--card);
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+    }
+
+    .review-author {
+      color: var(--accent1);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .review-text {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Add review form */
+    .add-review-container {
+      background-color: var(--card);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.1);
+    }
+
+    .add-review-container h3 {
+      color: var(--accent1);
+      margin-bottom: 1rem;
+    }
+
+    .add-review-container input,
+    .add-review-container textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      background-color: #11161d;
+      color: #fff;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .add-review-container button {
+      background-color: var(--accent1);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      color: white;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-weight: 600;
+    }
+
+    .add-review-container button:hover {
+      background-color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <h2>What Our Clients Say</h2>
+
+  <div class="reviews-container" id="reviewsContainer">
+    <!-- 12 reviews -->
+    <div class="review-card"><div class="review-author">Amara D.</div><div class="review-text">Jailander gave my salon a modern website that brings real customers. Absolutely love it!</div></div>
+    <div class="review-card"><div class="review-author">Michael K.</div><div class="review-text">Professional work. My real estate page looks clean and gets inquiries daily.</div></div>
+    <div class="review-card"><div class="review-author">Lydia F.</div><div class="review-text">The landing page they created increased my online orders by 40%. Highly recommended!</div></div>
+    <div class="review-card"><div class="review-author">Tosin A.</div><div class="review-text">I love how simple but powerful the design is. It fits my clothing brand perfectly.</div></div>
+    <div class="review-card"><div class="review-author">Raymond O.</div><div class="review-text">Excellent work ethic and quick delivery. Jailander really knows design.</div></div>
+    <div class="review-card"><div class="review-author">Zara P.</div><div class="review-text">They turned my small store into a real online brand. Thank you Jailander!</div></div>
+    <div class="review-card"><div class="review-author">Tunde I.</div><div class="review-text">Super fast delivery and top-notch creativity. Worth every naira.</div></div>
+    <div class="review-card"><div class="review-author">Chioma L.</div><div class="review-text">I get compliments daily on my website. Jailander did a fantastic job.</div></div>
+    <div class="review-card"><div class="review-author">Kelvin E.</div><div class="review-text">Easy to work with, responsive, and professional. I’ll definitely hire them again.</div></div>
+    <div class="review-card"><div class="review-author">Rita M.</div><div class="review-text">They listened to my ideas and built something even better than I imagined.</div></div>
+    <div class="review-card"><div class="review-author">Abdul R.</div><div class="review-text">I got my landing page in 2 days and it’s beautiful. Great experience overall.</div></div>
+    <div class="review-card"><div class="review-author">Sandra G.</div><div class="review-text">My beauty brand finally has a professional site that stands out. Thank you Jailander!</div></div>
+  </div>
+
+  <div class="add-review-container">
+    <h3>Leave a Review</h3>
+    <input type="text" id="nameInput" placeholder="Your name" required />
+    <textarea id="reviewInput" rows="4" placeholder="Write your review..." required></textarea>
+    <button onclick="addReview()">Submit Review</button>
+  </div>
+
+  <script>
+    function addReview() {
+      const name = document.getElementById('nameInput').value.trim();
+      const text = document.getElementById('reviewInput').value.trim();
+
+      if (name && text) {
+        const container = document.getElementById('reviewsContainer');
+        const newCard = document.createElement('div');
+        newCard.classList.add('review-card');
+        newCard.innerHTML = `<div class="review-author">${name}</div><div class="review-text">${text}</div>`;
+        container.prepend(newCard);
+
+        // Reset form
+        document.getElementById('nameInput').value = '';
+        document.getElementById('reviewInput').value = '';
+      } else {
+        alert("Please fill out both fields before submitting.");
+      }
+    }
+  </script>
+</body>
+</html>

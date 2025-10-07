@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Get Started — JaiLander</title>
+  <meta name="description" content="Provide your business info to get your landing page built.">
+  <style>
+    :root {
+      --bg:#07090b;
+      --accent1:#3b82f6;
+      --accent2:#8b5cf6;
+      --accent3:#ffffff;
+      --muted:#9aa3ad;
+      --card:#0b0f14;
+      --card-border:rgba(255,255,255,0.05);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body {
+      font-family: system-ui,-apple-system,Segoe UI,Roboto;
+      background-color: #220565;
+      color:#fff;
+      min-height:100vh;
+      padding:20px;
+    }
+    .container{
+      max-width:600px;
+      margin:0 auto;
+      padding:20px;
+    }
+    h1 {font-size:24px;font-weight:700;margin-bottom:10px;text-align:center;}
+    p {color:var(--muted);margin-bottom:24px;text-align:center;}
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      background:var(--card);
+      padding:24px;
+      border-radius:14px;
+      border:1px solid var(--card-border);
+    }
+    label{font-size:14px;color:var(--muted);}
+    input,textarea,select{
+      padding:12px;
+      border-radius:10px;
+      background:transparent;
+      border:1px solid var(--card-border);
+      color:#fff;
+      outline:none;
+      font-size:14px;
+      width:100%;
+    }
+    input[type="file"]{padding:6px;}
+    button{
+      padding:12px;
+      border:none;
+      border-radius:12px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#fff;
+      font-weight:600;
+      cursor:pointer;
+      transition:opacity .2s;
+    }
+    button:hover{opacity:0.9;}
+    .small{font-size:13px;color:var(--muted);}
+    @media(max-width:480px){
+      h1{font-size:20px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Get Started with JaiLander</h1>
+    <p>Fill out the form below to provide your business details. We’ll use this info to build your landing page.</p>
+
+    <form id="getStartedForm" method="POST" action="https://formspree.io/f/yourFormID" enctype="multipart/form-data">
+      <label>Business Name</label>
+      <input type="text" name="businessName" placeholder="GlowSkin Co." required>
+
+      <label>Logo (PNG/SVG)</label>
+      <input type="file" name="logo" accept=".png,.svg" required>
+      <span class="small">Upload your logo file in PNG or SVG format.</span>
+
+      <label>Brand Colors (hex codes)</label>
+      <input type="text" name="brandColors" placeholder="#3b82f6, #8b5cf6, #fff" required>
+
+      <label>Products / Services</label>
+      <textarea name="products" rows="3" placeholder="3 skin serums, 1 face cream" required></textarea>
+
+      <label>Pricing</label>
+      <input type="text" name="pricing" placeholder="₦8,500 – ₦12,000" required>
+
+      <label>Unique Selling Proposition (USP)</label>
+      <input type="text" name="usp" placeholder="Brightens skin in 7 days" required>
+
+      <label>Call-to-Action (CTA)</label>
+      <input type="text" name="cta" placeholder="WhatsApp: https://wa.me/2348012345678" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    // Show alert when submitted (temporary, for testing)
+    const form = document.getElementById('getStartedForm');
+    form.addEventListener('submit', (e)=>{
+      // e.preventDefault(); // uncomment if you want to prevent actual submission for testing
+      alert("Form submitted! Replace Formspree action URL with your real endpoint.");
+    });
+  </script>
+</body>
+</html>
